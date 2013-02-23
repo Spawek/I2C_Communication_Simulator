@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" dslVersion="1.0.0.0" Id="439d77b7-c434-4fba-9ada-b2c106b0cb6a" name="I2cWriteMasterWIthTarget" mode="DotNet" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
+  <packagedElements>
+    <packageHasNamedElement>
+      <interaction Id="244fe635-96e3-4ef4-baad-f388586fbf80" name="I2cWriteMasterWIthTarget" collapseFragmentsFlag="false" isActiveClass="false" isAbstract="false" isLeaf="false" isReentrant="false">
+        <fragments>
+          <behaviorExecutionSpecification Id="93525e0e-bdf7-44f9-937b-0359754fd392" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="3b70845d-7356-40da-832d-4678156fb27c" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="4863279a-bfdf-44e5-a924-0c19c2b6310c" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="c7618425-12d5-42bf-96a0-84c832f53379" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="4863279a-bfdf-44e5-a924-0c19c2b6310c" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="1c090836-c3dd-419f-ae17-dc30a7d5c233" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="87f06835-aab2-4b57-8eb9-699191d0ca70" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="5ee3005d-a1ae-4e08-9c73-0971ab44cc48" LastKnownName="I2cMaster" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="c7618425-12d5-42bf-96a0-84c832f53379" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="3b70845d-7356-40da-832d-4678156fb27c" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="474f383d-5cce-41c5-b396-d4a7a9537e49" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="fbe2a229-53d2-4367-9e35-abf8d816372c" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="4fcbb0fc-90ef-4880-be83-90335c64f274" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="4dfc2ae1-0d13-47bf-b5a9-317e0a65c7f2" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="b4f66b80-5c50-4f43-91ec-47a8cd2b9e0f" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="3213b859-94b6-48a4-a00d-b619aabe774a" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="4dfc2ae1-0d13-47bf-b5a9-317e0a65c7f2" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="f13e05c9-8cbd-43e8-94af-871a68e342ec" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="49a687df-b43c-432f-8a47-9e9c1df55996" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="5ee3005d-a1ae-4e08-9c73-0971ab44cc48" LastKnownName="I2cMaster" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="b4f66b80-5c50-4f43-91ec-47a8cd2b9e0f" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="0ec0b429-0a65-4872-ba9b-30c47ae3b8cb" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="5ee3005d-a1ae-4e08-9c73-0971ab44cc48" LastKnownName="I2cMaster" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="3213b859-94b6-48a4-a00d-b619aabe774a" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="4fcbb0fc-90ef-4880-be83-90335c64f274" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="085f0100-8042-4310-8b18-1e13836d6cc1" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="47d33901-d102-4f6c-a8c1-59213b1f2301" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="249e524e-cf94-413c-b874-27d7b6366c9d" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="c6b6db02-7865-4ba9-8878-1a1d29730f9d" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="24d68536-b31b-48ba-a569-87f35d28fa87" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="b7e34bae-92bb-442c-b011-23c8f0abb0c4" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="c6b6db02-7865-4ba9-8878-1a1d29730f9d" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="cbccda23-b05e-416b-81b2-b91c1eab1491" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="24d68536-b31b-48ba-a569-87f35d28fa87" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="39be577e-2e19-426b-9d9e-e6ee8109a73d" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="5ee3005d-a1ae-4e08-9c73-0971ab44cc48" LastKnownName="I2cMaster" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="b7e34bae-92bb-442c-b011-23c8f0abb0c4" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="345bc40f-6961-4ab4-a4b3-ddc10e2097c7" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="5ee3005d-a1ae-4e08-9c73-0971ab44cc48" LastKnownName="I2cMaster" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="249e524e-cf94-413c-b874-27d7b6366c9d" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="b8fbc6a6-9957-40ea-9983-0ed2545fa814" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="d4c06603-606a-4a02-8924-c69959753906" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="131b7a3b-27ac-4e45-b88f-4e08120e4eba" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="637ca77c-5746-4fa2-a4be-97d28abbb2f1" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="c6ce8a8b-edcf-4ceb-87dc-c4d5caacd2d4" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="07056630-f1d2-45e0-b0d1-bc4913a5435b" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="637ca77c-5746-4fa2-a4be-97d28abbb2f1" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="38df515e-6af2-406e-a9e5-27e869851d9d" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="759f468a-76d3-4325-b30c-076bc24edaaf" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="5ee3005d-a1ae-4e08-9c73-0971ab44cc48" LastKnownName="I2cMaster" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="c6ce8a8b-edcf-4ceb-87dc-c4d5caacd2d4" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="07056630-f1d2-45e0-b0d1-bc4913a5435b" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="ad990cc7-e9d8-4b01-8c20-886bf4691374" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="5ee3005d-a1ae-4e08-9c73-0971ab44cc48" LastKnownName="I2cMaster" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="131b7a3b-27ac-4e45-b88f-4e08120e4eba" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="83edc8f2-2d6b-4916-82fa-8afc9d89cf1f" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <behaviorExecutionSpecification Id="04d2a60b-0872-4a63-a4c8-8891bdc89198" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="2e7830b2-31ba-4739-9f64-9e22730f9394" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="ee0122e1-10bd-4c05-a752-bd7b07923c09" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="7b2166ed-c8bf-4d22-9aee-81713a7a7fdb" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="ee0122e1-10bd-4c05-a752-bd7b07923c09" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="56ce599d-d6ee-4dd6-9fdd-128f68400998" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="952cc326-5f31-4c75-badc-fcb2e670a030" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="5ee3005d-a1ae-4e08-9c73-0971ab44cc48" LastKnownName="I2cMaster" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="7b2166ed-c8bf-4d22-9aee-81713a7a7fdb" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="2e7830b2-31ba-4739-9f64-9e22730f9394" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="5a60c843-0901-4f04-b7cf-0094d3620187" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="7bea6b2f-7711-445e-bed7-f6b66834d276" LastKnownName="I2cSlave (target)" />
+            </covered>
+          </executionOccurrenceSpecification>
+        </fragments>
+        <lifelines>
+          <lifeline Id="5ee3005d-a1ae-4e08-9c73-0971ab44cc48" name="I2cMaster" isActor="false" lifelineDisplayName="I2cMaster">
+            <topLevelOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="87f06835-aab2-4b57-8eb9-699191d0ca70" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="49a687df-b43c-432f-8a47-9e9c1df55996" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="0ec0b429-0a65-4872-ba9b-30c47ae3b8cb" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="39be577e-2e19-426b-9d9e-e6ee8109a73d" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="345bc40f-6961-4ab4-a4b3-ddc10e2097c7" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="759f468a-76d3-4325-b30c-076bc24edaaf" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="ad990cc7-e9d8-4b01-8c20-886bf4691374" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="952cc326-5f31-4c75-badc-fcb2e670a030" LastKnownName="MessageOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="7bea6b2f-7711-445e-bed7-f6b66834d276" name="I2cSlave (target)" isActor="false" lifelineDisplayName="I2cSlave (target)">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="4863279a-bfdf-44e5-a924-0c19c2b6310c" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="3b70845d-7356-40da-832d-4678156fb27c" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="4dfc2ae1-0d13-47bf-b5a9-317e0a65c7f2" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="4fcbb0fc-90ef-4880-be83-90335c64f274" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="c6b6db02-7865-4ba9-8878-1a1d29730f9d" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="249e524e-cf94-413c-b874-27d7b6366c9d" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="637ca77c-5746-4fa2-a4be-97d28abbb2f1" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="131b7a3b-27ac-4e45-b88f-4e08120e4eba" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="ee0122e1-10bd-4c05-a752-bd7b07923c09" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="2e7830b2-31ba-4739-9f64-9e22730f9394" LastKnownName="ExecutionOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+        </lifelines>
+        <messages>
+          <message Id="9666abfb-4bff-4212-a8b2-89afd03f8257" name="msgStart" messageKind="Complete" messageSort="AsynchCall" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="87f06835-aab2-4b57-8eb9-699191d0ca70" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="c7618425-12d5-42bf-96a0-84c832f53379" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="14f9718c-dabc-45a4-8f71-c74bb322d125" name="matching address and write mode" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="49a687df-b43c-432f-8a47-9e9c1df55996" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="b4f66b80-5c50-4f43-91ec-47a8cd2b9e0f" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="b9a94637-1c08-455b-93b3-e42cec4b4468" name="ACK" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="3213b859-94b6-48a4-a00d-b619aabe774a" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="0ec0b429-0a65-4872-ba9b-30c47ae3b8cb" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="087ade33-f772-4442-99f0-8c062a968078" name="command" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="39be577e-2e19-426b-9d9e-e6ee8109a73d" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="24d68536-b31b-48ba-a569-87f35d28fa87" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="8cee2861-5480-43a8-8576-a587568be0cd" name="ACK" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="b7e34bae-92bb-442c-b011-23c8f0abb0c4" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="345bc40f-6961-4ab4-a4b3-ddc10e2097c7" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="e1692799-a442-4755-af7e-b05bbbb0314e" name="command data" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="759f468a-76d3-4325-b30c-076bc24edaaf" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="c6ce8a8b-edcf-4ceb-87dc-c4d5caacd2d4" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="fbc2288b-a6ad-4501-916a-59d944f01a5c" name="ack" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="07056630-f1d2-45e0-b0d1-bc4913a5435b" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="ad990cc7-e9d8-4b01-8c20-886bf4691374" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="8406237e-613c-4a62-a9d8-1b1c2436ef8e" name="msgEnd" messageKind="Complete" messageSort="AsynchCall" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="952cc326-5f31-4c75-badc-fcb2e670a030" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="7b2166ed-c8bf-4d22-9aee-81713a7a7fdb" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+        </messages>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="1c090836-c3dd-419f-ae17-dc30a7d5c233" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="474f383d-5cce-41c5-b396-d4a7a9537e49" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="f13e05c9-8cbd-43e8-94af-871a68e342ec" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="085f0100-8042-4310-8b18-1e13836d6cc1" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="cbccda23-b05e-416b-81b2-b91c1eab1491" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="b8fbc6a6-9957-40ea-9983-0ed2545fa814" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="38df515e-6af2-406e-a9e5-27e869851d9d" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="83edc8f2-2d6b-4916-82fa-8afc9d89cf1f" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="56ce599d-d6ee-4dd6-9fdd-128f68400998" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="5a60c843-0901-4f04-b7cf-0094d3620187" name="ExecutionEvent" />
+    </packageHasNamedElement>
+  </packagedElements>
+</SequenceDesignerModel>
