@@ -9,7 +9,5 @@ namespace I2C_Communication_Simulator
     {
         Low,
         High,
-        Fallen,
-        Risen,
     }
 }

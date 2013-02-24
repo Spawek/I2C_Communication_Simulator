@@ -26,77 +26,76 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
   </Class>
-  <Class Name="I2C_Communication_Simulator.I2cMaster" Collapsed="true">
-    <Position X="8.75" Y="1" Width="1.5" />
+  <Class Name="I2C_Communication_Simulator.I2cMaster">
+    <Position X="9.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAEAAAACAgAAAAAACAE=</HashCode>
-      <FileName>I2cMaster.cs</FileName>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>I2cDevices\Interface\I2cMaster.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="I2C_Communication_Simulator.I2cSlave" Collapsed="true">
-    <Position X="12.5" Y="1" Width="2" />
+  <Class Name="I2C_Communication_Simulator.I2cSlave">
+    <Position X="12.25" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAEAAAACAgAAAAAAAAk=</HashCode>
-      <FileName>I2cSlave.cs</FileName>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>I2cDevices\Interface\I2cSlave.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="I2C_Communication_Simulator.FixedTimeClockGenerator" Collapsed="true">
-    <Position X="14" Y="5" Width="1.5" />
+    <Position X="15.75" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAgAAAAAACAAAAACAAAACgACAAAAAAAAIAAAAAAAYAQ=</HashCode>
-      <FileName>FixedTimeClockGenerator.cs</FileName>
+      <FileName>I2cDevices\Implementation\FixedTimeClockGenerator.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="I2C_Communication_Simulator.I2cBusWorkingImplementation" Collapsed="true">
     <Position X="7.25" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgkAAAAAAAAAAAAAEAAAAAAAQAAAAAAAA=</HashCode>
-      <FileName>I2cBusWorkingImplementation.cs</FileName>
+      <HashCode>AAAAAAAAABIAhAAAAAAAAAAAAhEAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>I2cDevices\Implementation\I2cBusWorkingImplementation.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="I2C_Communication_Simulator.ManualClockGenerator" Collapsed="true">
+    <Position X="15.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAACAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAYAQ=</HashCode>
+      <FileName>I2cDevices\Implementation\ManualClockGenerator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="I2C_Communication_Simulator.I2cDevice">
+    <Position X="11" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>CAAiAAECgAIAgAjIQAAAAUAAAQIAAAAAAAAAAAMAAAA=</HashCode>
+      <FileName>I2cDevices\Interface\I2cDevice.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="bus" />
+      <Property Name="clockGenerator" />
+    </ShowAsAssociation>
+  </Class>
+  <Struct Name="I2C_Communication_Simulator.Frame" Collapsed="true">
+    <Position X="0.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Definitions\Frame.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
   <Interface Name="I2C_Communication_Simulator.ClockGenerator">
-    <Position X="12" Y="4.5" Width="1.5" />
+    <Position X="12.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAgAAAAAACAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAIAQ=</HashCode>
-      <FileName>ClockGenerator.cs</FileName>
+      <FileName>I2cDevices\Interface\ClockGenerator.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="I2C_Communication_Simulator.I2cBus">
-    <Position X="9.5" Y="4.5" Width="1.75" />
+    <Position X="8.5" Y="6.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgkAAAAAAAAAAAAAEAAAAAAAQAAAAAAAA=</HashCode>
-      <FileName>I2cBus.cs</FileName>
+      <HashCode>AAAAAAAAABIAgAAAAAAAAAAAAhEAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>I2cDevices\Interface\I2cBus.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="ClockGenerator" />
-    </ShowAsAssociation>
-  </Interface>
-  <Interface Name="I2C_Communication_Simulator.I2cDevice">
-    <Position X="10.75" Y="2.5" Width="1.5" />
-    <AssociationLine Name="I2cBus" Type="I2C_Communication_Simulator.I2cBus" FixedToPoint="true">
-      <Path>
-        <Point X="11.125" Y="3.796" />
-        <Point X="11.125" Y="4.5" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="ClockGenerator" Type="I2C_Communication_Simulator.ClockGenerator" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="12.125" Y="3.796" />
-        <Point X="12.125" Y="4.148" />
-        <Point X="12.125" Y="4.148" />
-        <Point X="12.125" Y="4.5" />
-      </Path>
-    </AssociationLine>
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAACAgAAAAAAAAE=</HashCode>
-      <FileName>I2cDevice.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="I2cBus" />
       <Property Name="ClockGenerator" />
     </ShowAsAssociation>
   </Interface>
@@ -104,14 +103,14 @@
     <Position X="6.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAACAAAAAAAAAAAA=</HashCode>
-      <FileName>ACK.cs</FileName>
+      <FileName>Definitions\ACK.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="I2C_Communication_Simulator.PinState">
     <Position X="6.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEAAAAAAAAAAAAgAAAAAAAAgAAAAAABAAAAAAAAA=</HashCode>
-      <FileName>PinState.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Definitions\PinState.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

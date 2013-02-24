@@ -47,20 +47,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ACK.cs" />
-    <Compile Include="ClockGenerator.cs" />
-    <Compile Include="FixedTimeClockGenerator.cs" />
+    <Compile Include="Converter.cs" />
+    <Compile Include="Definitions\ACK.cs" />
+    <Compile Include="Definitions\AddressAndRWInfo.cs" />
+    <Compile Include="Definitions\Frame.cs" />
+    <Compile Include="I2cDevices\Interface\ClockGenerator.cs" />
+    <Compile Include="I2cDevices\Implementation\FixedTimeClockGenerator.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="I2cBus.cs" />
-    <Compile Include="I2cDevice.cs" />
-    <Compile Include="I2cMaster.cs" />
-    <Compile Include="I2cSlave.cs" />
-    <Compile Include="PinState.cs" />
+    <Compile Include="I2cDevices\Interface\I2cBus.cs" />
+    <Compile Include="I2cDevices\Implementation\I2cBusWorkingImplementation.cs" />
+    <Compile Include="I2cDevices\Interface\I2cDevice.cs" />
+    <Compile Include="I2cDevices\Interface\I2cMaster.cs" />
+    <Compile Include="I2cDevices\Interface\I2cSlave.cs" />
+    <Compile Include="I2cDevices\Implementation\ManualClockGenerator.cs" />
+    <Compile Include="Definitions\PinState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Diagrams\I2cCommunicatonMasterWithNonTarget.sequencediagram.layout">

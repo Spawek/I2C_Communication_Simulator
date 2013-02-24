@@ -7,8 +7,12 @@ namespace I2C_Communication_Simulator
 {
     public interface I2cBus
     {
-        PinState SDA { get; }
-        PinState SCL { get; }
+        PinState CurrSDA { get; }
+        PinState LastSDA { get; }
+
+        PinState CurrSCL { get; }
+        PinState LastSCL { get; }
+
         ClockGenerator ClockGenerator { get; }
 
         void GruondSCLForThisCycle();

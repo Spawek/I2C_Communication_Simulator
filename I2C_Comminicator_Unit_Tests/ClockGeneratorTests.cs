@@ -27,6 +27,7 @@ namespace I2C_Comminicator_Unit_Tests
             generator.Start();
             System.Threading.Thread.Sleep(20);
             generator.Stop();
+            System.Threading.Thread.Sleep(10); //to check if it really stopped
 
             int expected = 10;
             int delta = 1;
