@@ -34,11 +34,11 @@ namespace I2C_Communication_Simulator
         {
             if (outputQueue.Count > 0)
             {
-                if (bus.LastSCL == PinState.Low && bus.LastSCL == PinState.High)
+                if (bus.LastSCL == PinState.Low && bus.CurrSCL == PinState.High)
                 {
                     if (!outputQueue.Dequeue())
                     {
-                        bus.GruondSCLForThisCycle();
+                        bus.GroundSDAForThisCycle();
                     }
                 }
             }

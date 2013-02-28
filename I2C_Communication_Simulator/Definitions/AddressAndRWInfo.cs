@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,11 +33,11 @@ namespace I2C_Communication_Simulator
             address = 0;
             for (int i = 0; i <= 6; i++)
             {
+                address *= 2;
                 if (msg[i])
                 {
                     address++;
                 }
-                address *= 2;
             }
 
             if (msg[7])
@@ -47,6 +48,31 @@ namespace I2C_Communication_Simulator
             {
                 mode = ModeRW.Read;
             }
+        }
+
+        public AddressAndRWInfo(byte _address, ModeRW _mode)
+        {
+            if (_address > 0x7F)
+                throw new ArgumentException("address cannot be bigger than 0x7F (127)", "_address");
+
+            address = _address;
+            mode = _mode;
+        }
+
+        public bool[] ConvertToBoolArr()
+        {
+            bool[] boolArr = Converter.ByteToBoolArr((byte)(address << 1));
+
+            if (mode == ModeRW.Write)
+            {
+                boolArr[7] = true;
+            }
+            else
+            {
+                boolArr[7] = false;
+            }
+
+            return boolArr;
         }
     }
 }

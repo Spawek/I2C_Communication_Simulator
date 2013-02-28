@@ -53,6 +53,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AddressAndRWInfoTests.cs" />
     <Compile Include="ClockGeneratorTests.cs" />
     <Compile Include="I2cBusWorkingImplementationTests.cs" />
     <Compile Include="I2cDeviceTests.cs" />

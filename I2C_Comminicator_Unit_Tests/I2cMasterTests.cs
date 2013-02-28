@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using I2C_Communication_Simulator;
 using System.IO;
+using System.Collections;
 
 namespace I2C_Comminicator_Unit_Tests
 {
@@ -80,6 +81,38 @@ namespace I2C_Comminicator_Unit_Tests
             //        clock.Tick();
             //    }
             //}
+        }
+
+        [TestMethod]
+        public void I2cMasterTests_CorrectAddressingTest()
+        {
+            byte address = (byte)0x55;
+            dev.WriteI2cMsg(address, new List<byte>(new byte[] { 0xFF }));  //0x55 = 00110011 -> in 7 bit 0110011
+
+            //transmission start
+            clock.Tick(); 
+
+            bool[] bArr = Converter.ByteToBoolArr((byte)(address << 1));
+            bArr[7] = true; //write mode
+
+            //address transmission
+            for (int i = 7; i >= 0; i--)
+            {
+                clock.Tick();
+                Assert.AreEqual(PinState.Low, bus.CurrSCL);
+                clock.Tick(); //byte is transmitted every 2nd tick
+                Assert.AreEqual(PinState.High, bus.CurrSCL); //SCL should be always high on bit transmission
+                if (bArr[i])
+                {
+                    Assert.AreEqual(PinState.High, bus.CurrSDA);
+                }
+                else
+                {
+                    Assert.AreEqual(PinState.Low, bus.CurrSDA);
+                }
+            }
+
+            //later actions are not important for addressing test
         }
 
     }
