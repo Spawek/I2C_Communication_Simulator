@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace I2C_Communication_Simulator
 {
-    public struct Frame
+    public class Frame
     {
         public AddressAndRWInfo addressAndRW;
         public List<byte> data;
@@ -36,11 +36,16 @@ namespace I2C_Communication_Simulator
                     {
                         tmp++;
                     }
-                    tmp *= 2;
+
+                    if ((i + 1) % 8 != 0) //multiply x2 on all bytes but last one
+                    {
+                        tmp *= 2;
+                    }
                 }
                 data.Add(tmp);
 
             }
         }
+
     }
 }

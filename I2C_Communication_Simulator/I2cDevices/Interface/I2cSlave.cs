@@ -14,8 +14,8 @@ namespace I2C_Communication_Simulator
             throw new System.NotImplementedException();
         }
 
-        public I2cSlave(I2cBus _bus, ClockGenerator clock, byte _address)
-            : base(_bus, clock, _address)
+        public I2cSlave(I2cBus _bus, ClockGenerator clock, byte _address, string devName)
+            : base(_bus, clock, _address, devName)
         {
 
         }

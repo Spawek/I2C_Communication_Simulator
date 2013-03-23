@@ -14,7 +14,7 @@ namespace I2C_Comminicator_Unit_Tests
         [TestMethod]
         public void FixedTimeClockGeneratorTest()
         {
-            FixedTimeClockGenerator generator = new FixedTimeClockGenerator(2);
+            FixedTimeClockGenerator generator = new FixedTimeClockGenerator(5);
 
             int resetTicks = 0;
             int writeTicks = 0;
@@ -25,7 +25,7 @@ namespace I2C_Comminicator_Unit_Tests
             generator.I2cReadTick += delegate { readTicks++; };
 
             generator.Start();
-            System.Threading.Thread.Sleep(20);
+            System.Threading.Thread.Sleep(50);
             generator.Stop();
             System.Threading.Thread.Sleep(10); //to check if it really stopped
 

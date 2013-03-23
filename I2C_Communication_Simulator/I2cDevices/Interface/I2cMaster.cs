@@ -13,10 +13,20 @@ namespace I2C_Communication_Simulator
             AddressAndRWInfo firstFrame = new AddressAndRWInfo(address, ModeRW.Write);
             bool[] firstFrameBitArr = firstFrame.ConvertToBoolArr();
 
-            for (int i = 8 - 1; i >= 0; i--)
+            for (int i = 0; i < 8; i++)
             {
                 this.outputQueue.Enqueue(firstFrameBitArr[i]);
             }
+            this.outputQueue.Enqueue(true); //wait for ACK
+
+            foreach (byte item in data)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    this.outputQueue.Enqueue(((int)(item/Math.Pow(2,i)))%2 == 1); //mby slow but working
+                }
+            }
+            this.outputQueue.Enqueue(true); //wait for ACK
             
         }
 
@@ -25,8 +35,8 @@ namespace I2C_Communication_Simulator
             throw new System.NotImplementedException();
         }
 
-        public I2cMaster(I2cBus _bus, ClockGenerator clock, byte _address)
-            : base(_bus, clock, _address)
+        public I2cMaster(I2cBus _bus, ClockGenerator clock, byte _address, string devName)
+            : base(_bus, clock, _address, devName)
         {
             clockGenerator.I2cWriteTick += keepTransmisionOngoingIfThereAreBitsToSend;
         }

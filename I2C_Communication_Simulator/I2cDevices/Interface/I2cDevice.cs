@@ -8,7 +8,9 @@ namespace I2C_Communication_Simulator
 {
     public abstract class I2cDevice
     {
-        protected event EventHandler<Frame> FrameReceived;
+        public event EventHandler<Frame> FrameReceived;
+
+        protected string deviceName;
 
         protected I2cBus bus { get; private set; }
         protected ClockGenerator clockGenerator { get; private set; }
@@ -18,13 +20,15 @@ namespace I2C_Communication_Simulator
         protected Queue<byte> outputMsgQueue = new Queue<byte>();
         protected Queue<bool> outputQueue = new Queue<bool>();
         private List<bool> inputBuffer = new List<bool>();
+        private List<byte> inputBytesBuffer = new List<byte>();
         protected Dictionary<int, byte> memory = new Dictionary<int, byte>();
 
-        public I2cDevice(I2cBus _bus, ClockGenerator clock, byte _address)
+        public I2cDevice(I2cBus _bus, ClockGenerator clock, byte _address, string devName)
         {
             bus = _bus;
             clockGenerator = clock;
             address = _address;
+            deviceName = devName;
 
             clock.I2cReadTick += clock_I2cReadTick;
             clock.I2cWriteTick += clock_I2cWriteTick;
@@ -49,6 +53,7 @@ namespace I2C_Communication_Simulator
         private AddressAndRWInfo addressWithRWReceived = null;
         private bool imAddresee = false;
         private ModeRW mode = ModeRW.Read;
+        private bool ackBitOngoing = false;
         void clock_I2cReadTick(object sender, EventArgs e)
         {
             if (StartSqOngoing())
@@ -63,22 +68,35 @@ namespace I2C_Communication_Simulator
                     EventHandler<Frame> temp = FrameReceived;
                     if (temp != null)
                     {
-                        temp(this, new Frame(addressWithRWReceived, inputBuffer));
-                        inputBuffer.Clear();
+                        temp(this, new Frame(addressWithRWReceived, new List<byte>(inputBytesBuffer)));
+                        inputBytesBuffer.Clear();
                     }
                 }
                 frameOngoing = false;
+                imAddresee = false;
             }
 
-            if (frameOngoing)
+            if (frameOngoing || addressWithRWOngoing)
             {
-                ReadBit();
+                if (bus.LastSCL == PinState.Low && //only write cycles are important
+                    bus.CurrSCL == PinState.High)
+                {
+                    if (!ackBitOngoing)
+                    {
+                        ReadBit();
+                    }
+                    else
+                    {
+                        ackBitOngoing = false;
+                    }
+                }
             }
 
 
             if (addressWithRWOngoing && inputBuffer.Count == 8)
             {
                 addressWithRWOngoing = false;
+                ackBitOngoing = true;
                 addressWithRWReceived = new AddressAndRWInfo(inputBuffer.ToArray());
                 mode = addressWithRWReceived.mode;
                 inputBuffer.Clear();
@@ -88,7 +106,7 @@ namespace I2C_Communication_Simulator
                     imAddresee = true;
                     SendAck();
 
-                    if (mode == ModeRW.Write)
+                    if (mode == ModeRW.Read)
                     {
                         BitArray arr = new BitArray(outputMsgQueue.Dequeue());
                         if(arr.Count == 0)
@@ -115,11 +133,37 @@ namespace I2C_Communication_Simulator
 
             if (imAddresee) //receiving data
             {
-                if (inputBuffer.Count % 8 == 0)
+                if (inputBuffer.Count == 8 && !ackBitOngoing)
                 {
+                    GetByteOutOfInputBuffer();
                     SendAck();
                 }
             }
+
+            if (inputBuffer.Count > 0 && inputBuffer.Count % 8 == 0)
+            {
+                ackBitOngoing = true;
+            }
+
+        }
+
+        private void GetByteOutOfInputBuffer()
+        {
+            byte tmp = 0;
+            for (int i = 0; i < 8; i++)
+            {
+                if (inputBuffer[i])
+                {
+                    tmp++;
+                }
+
+                if (i != 7) //multiply x2 on all bytes but last one
+                {
+                    tmp *= 2;
+                }
+            }
+            inputBytesBuffer.Add(tmp);
+            inputBuffer.Clear();
         }
 
         private void SendAck()
@@ -132,7 +176,7 @@ namespace I2C_Communication_Simulator
             if (bus.LastSCL == PinState.Low &&
                 bus.CurrSCL == PinState.High)
             {
-                if (bus.LastSDA == PinState.Low)
+                if (bus.CurrSDA == PinState.Low)
                 {
                     inputBuffer.Add(false);
                 }

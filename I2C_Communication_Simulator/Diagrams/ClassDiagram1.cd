@@ -26,14 +26,14 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
   </Class>
-  <Class Name="I2C_Communication_Simulator.I2cMaster">
+  <Class Name="I2C_Communication_Simulator.I2cMaster" Collapsed="true">
     <Position X="9.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <HashCode>AAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAACAg=</HashCode>
       <FileName>I2cDevices\Interface\I2cMaster.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="I2C_Communication_Simulator.I2cSlave">
+  <Class Name="I2C_Communication_Simulator.I2cSlave" Collapsed="true">
     <Position X="12.25" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
@@ -49,7 +49,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="I2C_Communication_Simulator.I2cBusWorkingImplementation" Collapsed="true">
-    <Position X="7.25" Y="5" Width="1.5" />
+    <Position X="6.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAABIAhAAAAAAAAAAAAhEAAAAAAAQAAAAAAAA=</HashCode>
       <FileName>I2cDevices\Implementation\I2cBusWorkingImplementation.cs</FileName>
@@ -64,8 +64,22 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="I2C_Communication_Simulator.I2cDevice">
-    <Position X="11" Y="2.5" Width="1.75" />
+  <Class Name="I2C_Communication_Simulator.I2cDevice" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.75" />
+    <AssociationLine Name="bus" Type="I2C_Communication_Simulator.I2cBus" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.633" Y="5.062" />
+        <Point X="11.633" Y="6.5" />
+        <Point X="10.25" Y="6.5" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="clockGenerator" Type="I2C_Communication_Simulator.ClockGenerator" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="12.223" Y="5.062" />
+        <Point X="12.223" Y="6.562" />
+        <Point X="13" Y="6.562" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>CAAiAAECgAIAgAjIQAAAAUAAAQIAAAAAAAAAAAMAAAA=</HashCode>
       <FileName>I2cDevices\Interface\I2cDevice.cs</FileName>
@@ -83,7 +97,7 @@
     </TypeIdentifier>
   </Struct>
   <Interface Name="I2C_Communication_Simulator.ClockGenerator">
-    <Position X="12.5" Y="6.5" Width="1.5" />
+    <Position X="13" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAgAAAAAACAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAIAQ=</HashCode>
       <FileName>I2cDevices\Interface\ClockGenerator.cs</FileName>
