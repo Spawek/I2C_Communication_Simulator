@@ -81,7 +81,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAiAAECgAIAgBjIQAAJQUAAAQIAQAAAACCEAAMAAAA=</HashCode>
+      <HashCode>AAAiAAECgAIAgBjIQAAJQWAAAQIAQAAAACCEAAMAAAA=</HashCode>
       <FileName>I2cDevices\Interface\I2cDevice.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

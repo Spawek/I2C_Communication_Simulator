@@ -127,9 +127,9 @@
             this.label_TargetTemp.AutoSize = true;
             this.label_TargetTemp.Location = new System.Drawing.Point(115, 175);
             this.label_TargetTemp.Name = "label_TargetTemp";
-            this.label_TargetTemp.Size = new System.Drawing.Size(35, 13);
+            this.label_TargetTemp.Size = new System.Drawing.Size(19, 13);
             this.label_TargetTemp.TabIndex = 11;
-            this.label_TargetTemp.Text = "label7";
+            this.label_TargetTemp.Text = "20";
             // 
             // trackBar2
             // 

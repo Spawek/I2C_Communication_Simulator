@@ -48,35 +48,39 @@ namespace I2C_Communication_Simulator
             }
         }
 
-        private bool frameOngoing = false;
+        private bool imAddresseAndDataToMeOngoing = false;
         private bool addressWithRWOngoing = false;
         private AddressAndRWInfo addressWithRWReceived = null;
         private bool imSlaveWriteAdresee = false;
         private ModeRW mode = ModeRW.Read;
         private bool ackBitOngoing = false;
         protected bool imMasterReadingSlave = false;
+        private bool frameOngoing = false;
         void clock_I2cReadTick(object sender, EventArgs e)
         {
-            if (StartSqOngoing())
+            if (StartSqOngoing() && !frameOngoing)
             {
-                frameOngoing = true;
+                imAddresseAndDataToMeOngoing = true;
                 addressWithRWOngoing = true;
+                frameOngoing = true;
+                inputBuffer.Clear();
             }
-            else if (EndSqOngoing())
+            else if (EndSqOngoing() && frameOngoing)
             {
-                if (frameOngoing || imMasterReadingSlave)
+                if (imAddresseAndDataToMeOngoing || imMasterReadingSlave)
                 {
                     EventHandler<Frame> temp = FrameReceived;
                     if (temp != null)
                     {
                         temp(this, new Frame(addressWithRWReceived, new List<byte>(inputBytesBuffer)));
                         inputBytesBuffer.Clear();
-                        ResetInternalData(); //its a ltl workarround but it helps
                     }
                 }
-                frameOngoing = false;
+                imAddresseAndDataToMeOngoing = false;
                 imSlaveWriteAdresee = false;
                 imMasterReadingSlave = false;
+                frameOngoing = false;
+                ResetInternalData(); //its a ltl workarround but it helps
             }
 
             if (addressWithRWOngoing || imSlaveWriteAdresee || imMasterReadingSlave)
@@ -118,7 +122,7 @@ namespace I2C_Communication_Simulator
                 }
                 else
                 {
-                    frameOngoing = false; //frame is ongoing but not to this object
+                    imAddresseAndDataToMeOngoing = false; //frame is ongoing but not to this object
                 }
             }
 
@@ -145,7 +149,7 @@ namespace I2C_Communication_Simulator
 
         private void ResetInternalData()
         {
-            frameOngoing = false;
+            imAddresseAndDataToMeOngoing = false;
             addressWithRWOngoing = false;
             addressWithRWReceived = null;
             imSlaveWriteAdresee = false;

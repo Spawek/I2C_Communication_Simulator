@@ -225,6 +225,69 @@ namespace I2C_Comminicator_Unit_Tests
             }
         }
 
+        [TestMethod]
+        public void OnlyAdreseeReceivesSentMsgTest()
+        {
+            byte msg = 0x47;
+
+            FakeI2cDevice slaveNo2 = new FakeI2cDevice(bus, clock, 0x15, "slave no 2");
+
+            masterDev.WriteI2cMsg(slavDevAddr, new List<byte> { msg });
+            for (int i = 0; i < nearlyInfiniteNoOfTicks; i++)
+            {
+                clock.Tick();
+            }
+
+            Assert.AreEqual(msg, slaveDev.lastFrameReceived.data[0]); //just to check if test works
+
+            Assert.AreEqual(null, slaveNo2.lastFrameReceived);
+        }
+
+        [TestMethod]
+        public void OnlyMasterReceivesMsgOnMasterReadTest()
+        {
+            byte msg = 0x47;
+            slaveDev.EnqueueOutputMsg(msg);
+            FakeI2cDevice slaveNo2 = new FakeI2cDevice(bus, clock, 0x15, "slave no 2");
+
+            masterDev.ReadI2cSlave(slavDevAddr);
+            for (int i = 0; i < nearlyInfiniteNoOfTicks; i++)
+            {
+                clock.Tick();
+            }
+
+            Assert.AreEqual(msg, masterDev.lastFrameReceived.data[0]); //just to check if test works
+            Assert.AreEqual(null, slaveNo2.lastFrameReceived);
+        }
+
+        [TestMethod]
+        public void MasterReadsFromOneSlaveAndWRitesTo2ndOneFor5TimesTest()
+        {
+            byte writeMsg = 0x63;
+            byte readMsg = 0x42;
+
+            const byte slave2Addr = 0x15;
+            FakeI2cDevice slaveNo2 = new FakeI2cDevice(bus, clock, slave2Addr, "slave no 2");
+
+            for (int i = 0; i < 5; i++)
+            {
+                slaveDev.EnqueueOutputMsg(readMsg);
+                masterDev.ReadI2cSlave(slavDevAddr);
+                for (int j = 0; j < nearlyInfiniteNoOfTicks; j++)
+                {
+                    clock.Tick();
+                }
+                masterDev.WriteI2cMsg(slave2Addr, new List<byte>() { writeMsg });
+                for (int j = 0; j < nearlyInfiniteNoOfTicks; j++)
+                {
+                    clock.Tick();
+                }
+
+                Assert.AreEqual(readMsg, masterDev.lastFrameReceived.data[0]);
+                Assert.AreEqual(writeMsg, slaveNo2.lastFrameReceived.data[0]);
+            }
+        }
+
 
     }
 }

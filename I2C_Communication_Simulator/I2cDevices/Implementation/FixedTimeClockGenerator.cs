@@ -37,7 +37,7 @@ namespace I2C_Communication_Simulator
 
         private void Tick()
         {
-            Console.WriteLine("Tick!");
+            //Console.WriteLine("Tick!");
 
             //invoke reset
             EventHandler temp = I2cResetTick;

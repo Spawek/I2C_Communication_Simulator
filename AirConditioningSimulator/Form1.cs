@@ -21,13 +21,13 @@ namespace AirConditioningSimulator
         private I2cHeater heater;
         private I2cThermometer thermometer;
 
-        private int I2C_CLOCK_INTERVAL_IN_MS = 1;
+        private int I2C_CLOCK_INTERVAL_IN_MS = 10;
         private byte HEATER_I2C_ADDRESS = 0x53;
         private byte THERMOMETER_I2C_ADDRESS = 0x32;
         private byte CONTROLLER_I2C_ADDRESS = 0x01;
 
         private System.Timers.Timer timer = new System.Timers.Timer();
-        private int FORM_UPDATE_INTERVAL_IN_MS = 30;
+        private int FORM_UPDATE_INTERVAL_IN_MS = 50;
 
         public Form1()
         {
@@ -42,6 +42,8 @@ namespace AirConditioningSimulator
             timer.Elapsed += timer_Elapsed;
             timer.Start();
 
+            clock.Start();
+
             InitializeComponent();
         }
 
@@ -52,22 +54,29 @@ namespace AirConditioningSimulator
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            controller.WantedTemp = trackBar1.Value;
-            label_TargetTemp.Text = (trackBar1.Value + 20).ToString();
+            controller.WantedTemp = trackBar1.Value + 20;
+            label_TargetTemp.Text = controller.WantedTemp.ToString();
         }
 
         delegate void UpdateFormDelegate();
         private void UpdateForm()
         {
-            if (InvokeRequired)
-            { //workers thread
-                this.Invoke(new UpdateFormDelegate(UpdateForm));
+            try
+            {
+                if (label1.InvokeRequired)
+                { //workers thread
+                    this.Invoke(new UpdateFormDelegate(UpdateForm));
+                }
+                else
+                { //window thread
+                    label_InsideTemp.Text = model.InsideTemp.ToString();
+                    label_OutsideTemp.Text = model.OutsideTemp.ToString();
+                    label_HeaterTemp.Text = model.HeaterTemp.ToString();
+                }
             }
-            else
-            { //window thread
-                label_InsideTemp.Text = model.InsideTemp.ToString();
-                label_OutsideTemp.Text = model.OutsideTemp.ToString();
-                label_HeaterTemp.Text = model.HeaterTemp.ToString();
+            catch(Exception)
+            {
+                //just dont care about it
             }
         }
 

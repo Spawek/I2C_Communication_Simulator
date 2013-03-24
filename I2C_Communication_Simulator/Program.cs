@@ -22,18 +22,18 @@ namespace I2C_Communication_Simulator
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            backgroundWorkerThread = new Thread(new ThreadStart(BackgroundWorker));
-            backgroundWorkerThread.Start();
+            //backgroundWorkerThread = new Thread(new ThreadStart(BackgroundWorker));
+            //backgroundWorkerThread.Start();
 
             Application.Run(new Form1());
         }
 
-        static FixedTimeClockGenerator generator;
-        static void BackgroundWorker()
-        {
-            generator = new FixedTimeClockGenerator(1);
-            generator.Start();
-            Application.Run();
-        }
+        //static FixedTimeClockGenerator generator;
+        //static void BackgroundWorker()
+        //{
+        //    generator = new FixedTimeClockGenerator(1);
+        //    generator.Start();
+        //    Application.Run();
+        //}
     }
 }

@@ -53,15 +53,16 @@ namespace AirConditioningSimulator
 
         void I2cHeater_FrameReceived(object sender, Frame e)
         {
-            HeaterTemp = Convert.ToInt32(e.data);
+            Console.WriteLine("{0}: target heater temp acquired: {1}", this.ToString(), e.data[0]);
+            HeaterTemp = Convert.ToInt32(e.data[0]);
         }
     }
 
     public class I2cAirConditioningController : I2cMaster
     {
-        public int RoomTemp = 0;
-        public int WantedTemp = 0;
-        public int HeaterTemp = 0;
+        public int RoomTemp = 20;
+        public int WantedTemp = 20;
+        public int HeaterTemp = 20;
 
         private const int TEMP_ACTUALIZING_INTERVAL_IN_MS = 1000;
         private byte theromotherI2cAddress;
@@ -82,9 +83,10 @@ namespace AirConditioningSimulator
 
         void I2cAirConditioningController_FrameReceived(object sender, Frame e)
         {
-            RoomTemp = Convert.ToInt32(e.data);
+            Console.WriteLine("{0}: room temperature acquired: {1}", this.ToString(), e.data[0]);
+            RoomTemp = Convert.ToInt32(e.data[0]);
             if (RoomTemp < WantedTemp) HeaterTemp++;
-            else HeaterTemp--;
+            else if(RoomTemp > WantedTemp) HeaterTemp--;
         }
 
         bool isItReadCycle = true;
@@ -94,11 +96,19 @@ namespace AirConditioningSimulator
             {
                 if (isItReadCycle)
                 {
+                    Console.WriteLine("{0}: reading temperature from {1}", this.ToString(), theromotherI2cAddress);
                     this.ReadI2cSlave(theromotherI2cAddress);
                     isItReadCycle = false;
                 }
                 else
                 {
+                    if (HeaterTemp < byte.MinValue)
+                        HeaterTemp = byte.MinValue;
+                    else if (HeaterTemp > byte.MaxValue)
+                        HeaterTemp = byte.MaxValue;
+
+                    Console.WriteLine("{0}: writing heater temperature: {1} to {2}", this.ToString(), HeaterTemp, heaterI2cAddress);
+
                     this.WriteI2cMsg(heaterI2cAddress, new List<byte>() { Convert.ToByte(HeaterTemp) });
                     isItReadCycle = true;
                 }
