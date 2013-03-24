@@ -27,14 +27,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="I2C_Communication_Simulator.I2cMaster" Collapsed="true">
-    <Position X="9.75" Y="0.5" Width="1.5" />
+    <Position X="9.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAACAg=</HashCode>
       <FileName>I2cDevices\Interface\I2cMaster.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="I2C_Communication_Simulator.I2cSlave" Collapsed="true">
-    <Position X="12.25" Y="0.5" Width="2" />
+    <Position X="12.25" Y="2.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>I2cDevices\Interface\I2cSlave.cs</FileName>
@@ -81,7 +81,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>CAAiAAECgAIAgAjIQAAAAUAAAQIAAAAAAAAAAAMAAAA=</HashCode>
+      <HashCode>AAAiAAECgAIAgBjIQAAJQUAAAQIAQAAAACCEAAMAAAA=</HashCode>
       <FileName>I2cDevices\Interface\I2cDevice.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -90,7 +90,7 @@
     </ShowAsAssociation>
   </Class>
   <Struct Name="I2C_Communication_Simulator.Frame" Collapsed="true">
-    <Position X="0.75" Y="0.75" Width="1.5" />
+    <Position X="0.75" Y="3" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
       <FileName>Definitions\Frame.cs</FileName>
