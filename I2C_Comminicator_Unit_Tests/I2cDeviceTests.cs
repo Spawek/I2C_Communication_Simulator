@@ -38,6 +38,7 @@ namespace I2C_Comminicator_Unit_Tests
 
         public class FakeI2cMasterDevice : I2cMaster
         {
+            public Frame lastFrameReceived = null;
             public FakeI2cMasterDevice(I2cBus _bus, ClockGenerator clock, byte _address, string devName)
                 : base(_bus, clock, _address, devName)
             {

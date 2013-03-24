@@ -51,9 +51,10 @@ namespace I2C_Communication_Simulator
         private bool frameOngoing = false;
         private bool addressWithRWOngoing = false;
         private AddressAndRWInfo addressWithRWReceived = null;
-        private bool imAddresee = false;
+        private bool imSlaveWriteAdresee = false;
         private ModeRW mode = ModeRW.Read;
         private bool ackBitOngoing = false;
+        protected bool imMasterReadingSlave = false;
         void clock_I2cReadTick(object sender, EventArgs e)
         {
             if (StartSqOngoing())
@@ -63,20 +64,22 @@ namespace I2C_Communication_Simulator
             }
             else if (EndSqOngoing())
             {
-                if (frameOngoing)
+                if (frameOngoing || imMasterReadingSlave)
                 {
                     EventHandler<Frame> temp = FrameReceived;
                     if (temp != null)
                     {
                         temp(this, new Frame(addressWithRWReceived, new List<byte>(inputBytesBuffer)));
                         inputBytesBuffer.Clear();
+                        ResetInternalData(); //its a ltl workarround but it helps
                     }
                 }
                 frameOngoing = false;
-                imAddresee = false;
+                imSlaveWriteAdresee = false;
+                imMasterReadingSlave = false;
             }
 
-            if (frameOngoing || addressWithRWOngoing)
+            if (addressWithRWOngoing || imSlaveWriteAdresee || imMasterReadingSlave)
             {
                 if (bus.LastSCL == PinState.Low && //only write cycles are important
                     bus.CurrSCL == PinState.High)
@@ -92,7 +95,6 @@ namespace I2C_Communication_Simulator
                 }
             }
 
-
             if (addressWithRWOngoing && inputBuffer.Count == 8)
             {
                 addressWithRWOngoing = false;
@@ -103,26 +105,15 @@ namespace I2C_Communication_Simulator
 
                 if (addressWithRWReceived.address == this.address)
                 {
-                    imAddresee = true;
                     SendAck();
 
-                    if (mode == ModeRW.Read)
+                    if (mode == ModeRW.Read) //so this obj will be writing (its master mode, this obj is slave (it is adresee))
                     {
-                        BitArray arr = new BitArray(outputMsgQueue.Dequeue());
-                        if(arr.Count == 0)
-                        {
-                            for (int i = 0; i < 8; i++)
-			                {
-			                    outputQueue.Enqueue(true); //so 11111111 is msg in case of err
-			                }
-                        }
-                        else
-                        {
-                            foreach(bool bit in arr)
-                            {
-                                outputQueue.Enqueue(bit);
-                            }
-                        }
+                        EnqueueBitsFromOuputMsgQueue();
+                    }
+                    else
+                    {
+                        imSlaveWriteAdresee = true;
                     }
                 }
                 else
@@ -131,12 +122,17 @@ namespace I2C_Communication_Simulator
                 }
             }
 
-            if (imAddresee) //receiving data
+            if (imSlaveWriteAdresee || imMasterReadingSlave) //receiving data
             {
                 if (inputBuffer.Count == 8 && !ackBitOngoing)
                 {
                     GetByteOutOfInputBuffer();
                     SendAck();
+
+                    //if (imMasterReadingSlave) //its a but fix - TODO: try doing it in some better way
+                    //{
+                    //    ackBitOngoing = true;
+                    //}
                 }
             }
 
@@ -147,12 +143,44 @@ namespace I2C_Communication_Simulator
 
         }
 
+        private void ResetInternalData()
+        {
+            frameOngoing = false;
+            addressWithRWOngoing = false;
+            addressWithRWReceived = null;
+            imSlaveWriteAdresee = false;
+            mode = ModeRW.Read;
+            ackBitOngoing = false;
+            imMasterReadingSlave = false;
+            inputBuffer.Clear();
+            outputQueue.Clear();
+        }
+
+        private void EnqueueBitsFromOuputMsgQueue()
+        {
+            if (outputMsgQueue.Count == 0)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    outputQueue.Enqueue(true); //so 11111111 is msg in case of err
+                }
+            }
+            else
+            {
+                byte msg = outputMsgQueue.Dequeue();
+                for (int i = 0; i < 8; i++)
+                {
+                    this.outputQueue.Enqueue(((int)(msg / Math.Pow(2, i))) % 2 == 1); //mby slow but working
+                }
+            }
+        }
+
         private void GetByteOutOfInputBuffer()
         {
             byte tmp = 0;
             for (int i = 0; i < 8; i++)
             {
-                if (inputBuffer[i])
+                if (inputBuffer[7-i])
                 {
                     tmp++;
                 }
@@ -197,8 +225,7 @@ namespace I2C_Communication_Simulator
 
         private bool EndSqOngoing()
         {
-            return frameOngoing &&
-                bus.LastSDA == PinState.Low && 
+            return bus.LastSDA == PinState.Low && 
                 bus.CurrSDA == PinState.High &&
                 bus.LastSCL == PinState.High &&
                 bus.CurrSCL == PinState.High;

@@ -27,12 +27,28 @@ namespace I2C_Communication_Simulator
                 }
             }
             this.outputQueue.Enqueue(true); //wait for ACK
-            
         }
 
-        public void ReadI2cSlave()
+        public void ReadI2cSlave(byte address)
         {
-            throw new System.NotImplementedException();
+            bitsToSend = 18; //address(7) + RW(1) + ACK(1) + MSG(8) + ACK(1) //in this order
+            AddressAndRWInfo firstFrame = new AddressAndRWInfo(address, ModeRW.Read);
+            bool[] firstFrameBitArr = firstFrame.ConvertToBoolArr();
+
+            for (int i = 0; i < 8; i++)
+            {
+                this.outputQueue.Enqueue(firstFrameBitArr[i]);
+            }
+            this.outputQueue.Enqueue(true); //wait for ACK
+
+            //TODO: not sure if that part is needed at all
+            for (int i = 0; i < 8; i++)
+            {
+                this.outputQueue.Enqueue(true); //msg will be received in here
+            }
+            this.outputQueue.Enqueue(true); //wait for ACK
+
+            this.imMasterReadingSlave = true;
         }
 
         public I2cMaster(I2cBus _bus, ClockGenerator clock, byte _address, string devName)

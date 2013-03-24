@@ -17,35 +17,36 @@ namespace I2C_Communication_Simulator
             data = _data;
         }
 
-        public Frame(AddressAndRWInfo _addressAndRW, List<bool> boolData)
-        {
-            if (boolData.Count % 8 != 0)
-                throw new ApplicationException("wrong data size");
+        ////TODO: dunno if it used at all (and its not teted!) - so remove it
+        //public Frame(AddressAndRWInfo _addressAndRW, List<bool> boolData)
+        //{
+        //    if (boolData.Count % 8 != 0)
+        //        throw new ApplicationException("wrong data size");
 
-            addressAndRW = _addressAndRW;
+        //    addressAndRW = _addressAndRW;
 
-            data = new List<byte>();
-            for (int i = 0; i < boolData.Count;)
-            {
-                byte tmp = 0;
-                bool firstBoolRead = false;
-                for (; i % 8 != 0 || !firstBoolRead; i++)
-                {
-                    firstBoolRead = true;
-                    if (boolData[i])
-                    {
-                        tmp++;
-                    }
+        //    data = new List<byte>();
+        //    for (int i = 0; i < boolData.Count;)
+        //    {
+        //        byte tmp = 0;
+        //        bool firstBoolRead = false;
+        //        for (; i % 8 != 0 || !firstBoolRead; i++)
+        //        {
+        //            firstBoolRead = true;
+        //            if (boolData[7-i])
+        //            {
+        //                tmp++;
+        //            }
 
-                    if ((i + 1) % 8 != 0) //multiply x2 on all bytes but last one
-                    {
-                        tmp *= 2;
-                    }
-                }
-                data.Add(tmp);
+        //            if ((i + 1) % 8 != 0) //multiply x2 on all bytes but last one
+        //            {
+        //                tmp *= 2;
+        //            }
+        //        }
+        //        data.Add(tmp);
 
-            }
-        }
+        //    }
+        //}
 
     }
 }
